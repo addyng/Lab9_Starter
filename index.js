@@ -7,16 +7,22 @@ form.addEventListener('submit', e => {
   let operator = document.querySelector('#operator').value;
   // output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
 
-  // Step 3 Trying Try/Catch
+  // Step 3 Trying Try/Catch and Step 4 Throw and Custom Errors
   try {
     if (operator === '/' && secondNum === '0') {
-      throw new Error("You can't divide by 0");
+      throw new divideByZeroError("You can't divide by 0");
+    }
+    if (eval(`${firstNum} ${operator} ${secondNum}`) === Infinity) {
+      throw new infinityError("Your numbers are too big! They result in positive infinity!");
+    }
+    if (eval(`${firstNum} ${operator} ${secondNum}`) === -Infinity) {
+      throw new infinityError("Your numbers are too big! They result in negative infinity!");
     }
     output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
   } catch (err) {
     console.error(err);
   } finally {
-    console.log('Calculate button pressed (finally)');
+    console.log('Result is: ' + eval(`${firstNum} ${operator} ${secondNum}`));
   }
 });
 
@@ -24,7 +30,20 @@ let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
 // Start your code here
 // You may move this JS to another file if you wish
-console.log(errorBtns);
+// Step 4 Throw and Custom Errors
+class infinityError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "infinityError";
+  }
+}
+
+class divideByZeroError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "divideByZeroError";
+  }
+}
 
 // console.log
 errorBtns[0].addEventListener('click', () => {
