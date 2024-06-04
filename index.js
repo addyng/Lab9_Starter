@@ -5,7 +5,19 @@ form.addEventListener('submit', e => {
   let firstNum = document.querySelector('#first-num').value;
   let secondNum = document.querySelector('#second-num').value;
   let operator = document.querySelector('#operator').value;
-  output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+  // output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+  // Step 3 Trying Try/Catch
+  try {
+    if (operator === '/' && secondNum === '0') {
+      throw new Error("You can't divide by 0");
+    }
+    output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    console.log('Calculate button pressed (finally)');
+  }
 });
 
 let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
