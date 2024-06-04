@@ -125,3 +125,11 @@ errorBtns[13].addEventListener('click', () => {
   function abyss() {console.trace();}
   deep();
 });
+
+// Step 5 The Global Error handler and 3rd Party Tracking
+window.onerror = () => {
+  console.log('Error has occured');
+};
+errorBtns[14].addEventListener('click', () => {
+  const addTwoNumbers = a + b;
+});
