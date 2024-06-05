@@ -22,7 +22,8 @@ form.addEventListener('submit', e => {
   } catch (err) {
     console.error(err);
   } finally {
-    console.log('Result is: ' + eval(`${firstNum} ${operator} ${secondNum}`));
+    console.log('Calculation evaluated anyways');
+    output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
   }
 });
 
