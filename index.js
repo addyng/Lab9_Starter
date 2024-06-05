@@ -129,7 +129,7 @@ errorBtns[13].addEventListener('click', () => {
 
 // Step 5 The Global Error handler and 3rd Party Tracking
 window.onerror = (event, source, lineno, colno, error) => {
-  console.log('Error has occured');
+  console.log('Error has occured. This is the window.onerror message.');
 };
 errorBtns[14].addEventListener('click', () => {
   const addTwoNumbers = a + b;
