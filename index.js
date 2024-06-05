@@ -127,7 +127,7 @@ errorBtns[13].addEventListener('click', () => {
 });
 
 // Step 5 The Global Error handler and 3rd Party Tracking
-window.onerror = () => {
+window.onerror = (event, source, lineno, colno, error) => {
   console.log('Error has occured');
 };
 errorBtns[14].addEventListener('click', () => {
